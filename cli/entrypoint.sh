@@ -1,4 +1,4 @@
 #!/bin/sh
-ls
 cd sam_function
-ls
+sam build --use-container
+sam local start-api
