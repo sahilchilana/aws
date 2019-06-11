@@ -27,3 +27,4 @@ aws stepfunctions create-state-machine --definition '{
                 }
               }
             }' --name "statemachine" --role-arn "arn:aws:iam::670868576168:role/githubactiontesting-AddFunctionRole-828QDZ3VB97V"
+aws stepfunctions start-execution --state-machine arn:aws:states:us-east-1:670868576168:stateMachine:statemachine --name test
