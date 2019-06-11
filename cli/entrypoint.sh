@@ -1,4 +1,5 @@
 #!/bin/bash
+sleep 1m
 aws stepfunctions --endpoint http://localhost:8083 create-state-machine --definition '{
               "Comment": "Add two numbers and then subtact the result of add with another number",
               "StartAt": "AddNumbers",
