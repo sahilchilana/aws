@@ -1,5 +1,7 @@
 #!/bin/bash
-sleep 1m
+export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY
+export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_KEY
+export AWS_DEFAULT_REGION=us-east-1
 aws stepfunctions --endpoint http://localhost:8083 create-state-machine --definition '{
               "Comment": "Add two numbers and then subtact the result of add with another number",
               "StartAt": "AddNumbers",
