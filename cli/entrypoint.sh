@@ -1,6 +1,6 @@
 #!/bin/bash
-export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY
-export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_KEY
+export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 export AWS_DEFAULT_REGION=us-east-1
 aws stepfunctions create-state-machine --definition '{
               "Comment": "Add two numbers and then subtact the result of add with another number",
