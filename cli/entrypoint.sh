@@ -11,14 +11,17 @@ aws stepfunctions create-state-machine --definition '{
                   "Resource": "arn:aws:lambda:us-east-1:670868576168:function:githubactiontesting-AddFunction-1KWO14YS9KT41",
                   "Parameters":{
                       "number1":10,
-                      "number2":20,
-                      "number3":50
+                      "number2":20
                   },
                   "Next": "SubtractNumbers"
                 },
                   "SubtractNumbers": {
                   "Type": "Task",
                   "Resource": "arn:aws:lambda:us-east-1:670868576168:function:githubactiontesting-SubtractFunction-G5OHM6HZF29F",
+                  "Parameters":{
+                    "subtract from":40,
+                    "number1.$":"$"
+                  },
                   "End": true
                 } 
                 }
