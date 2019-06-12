@@ -6,7 +6,7 @@ export AWS_DEFAULT_REGION=us-east-1
 my_value=$(date)
 my_value=(${my_value// /_})
 my_value=(${my_value//:/-})
-aws stepfunctions --endpoint http://localhost:8083 create-state-machine --definition '{
+aws stepfunctions create-state-machine --definition '{
               "Comment": "Add two numbers and then subtact the result of add with another number",
               "StartAt": "AddNumbers",
               "States": {
