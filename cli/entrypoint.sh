@@ -5,6 +5,6 @@ export AWS_DEFAULT_REGION=us-east-1
 
 my_value=$(date)
 my_value=(${my_value// /_})
-aws stepfunctions start-execution --state-machine arn:aws:states:us-east-1:670868576168:stateMachine:statemachine --name my_value
+aws stepfunctions start-execution --state-machine arn:aws:states:us-east-1:670868576168:stateMachine:statemachine --name $my_value
 sleep 30s
-aws stepfunctions describe-execution --execution-arn arn:aws:states:us-east-1:670868576168:execution:statemachine:my_value
+aws stepfunctions describe-execution --execution-arn arn:aws:states:us-east-1:670868576168:execution:statemachine:$my_value
