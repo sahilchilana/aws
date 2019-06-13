@@ -3,7 +3,7 @@ export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
 export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 export AWS_DEFAULT_REGION=us-east-1
 
-aws stepfunctions create-state-machine --definition '{
+value=$(aws stepfunctions create-state-machine --definition '{
               "Comment": "Add two numbers and then subtact the result of add with another number",
               "StartAt": "AddNumbers",
               "States": {
@@ -22,4 +22,5 @@ aws stepfunctions create-state-machine --definition '{
                   "End": true
                 } 
               }
-              }' --name "statemachine" --role-arn "arn:aws:iam::670868576168:role/lambda-vpc-role"
+              }' --name "statemachine" --role-arn "arn:aws:iam::670868576168:role/lambda-vpc-role")
+echo $value              
