@@ -27,6 +27,7 @@ arn_value=$(aws stepfunctions create-state-machine --definition '{
               }' --name "statemachine" --role-arn "arn:aws:iam::670868576168:role/lambda-vpc-role" 2>&1)
 echo +++++
 echo $arn_value
+arn_value=(${arn_value// /_})
 if [ $arn_value==$arn_value ]; then
   echo failed
   error_value=$(echo $arn_value | grep error)
