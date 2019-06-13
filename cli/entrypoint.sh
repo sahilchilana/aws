@@ -27,6 +27,6 @@ statemachine_arn=$(aws stepfunctions create-state-machine --definition '{
               }
               }' --name "statemachine" --role-arn "arn:aws:iam::670868576168:role/lambda-vpc-role" | jq .stateMachineArn | tr -d '"')
   echo $arn_value           
-execution_arn=$(aws stepfunctions start-execution --state-machine $statemachine_arn --name $execution_name  | jq .executionArn | tr -d '"')
+execution_arn=$(aws stepfunctions start-execution --state-machine $statemachine_arn --name $execution_name --input "{\"number1\":10, \"number2\":20}"| jq .executionArn | tr -d '"')
 sleep 10s
 aws stepfunctions describe-execution --execution-arn $execution_arn
