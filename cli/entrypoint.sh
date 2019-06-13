@@ -22,5 +22,5 @@ value=$(aws stepfunctions create-state-machine --definition '{
                   "End": true
                 } 
               }
-              }' --name "statemachine" --role-arn "arn:aws:iam::670868576168:role/lambda-vpc-role")
-echo $value              
+              }' --name "statemachine" --role-arn "arn:aws:iam::670868576168:role/lambda-vpc-role"| cut -c29)
+echo $value            
