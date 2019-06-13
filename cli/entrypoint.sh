@@ -2,7 +2,6 @@
 export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
 export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 export AWS_DEFAULT_REGION=us-east-1
-exec 2>&1
 execution_name=$(date)
 execution_name=(${execution_name// /_})
 execution_name=(${execution_name//:/-})  
@@ -25,7 +24,9 @@ aws stepfunctions create-state-machine --definition '{
                   "End": true
                 } 
               }
-              }' --name "statemachine" --role-arn "arn:aws:iam::670868576168:role/lambda-vpc-role"| jq .stateMachineArn | tr -d '"' >> file1
+              }' --name "statemachine" --role-arn "arn:aws:iam::670868576168:role/lambda-vpc-role"| jq .stateMachineArn | tr -d '"'  2> file1
+echo +++++
+cat file1
 arn_value=$(cat file1)
 echo $arn_value
 if [ "$?" -ne 0 ]; then
