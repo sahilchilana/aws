@@ -28,8 +28,9 @@ arn_value=$(aws stepfunctions create-state-machine --definition '{
 echo +++++
 echo $arn_value
 if [ "$?" -ne 0 ]; then
-  error_value=$(echo $arn_value | grep error);
-  arn_value=$(echo $error_value | cut -d "'" -f 2);
+  echo failed
+  error_value=$(echo $arn_value | grep error)
+  arn_value=$(echo $error_value | cut -d "'" -f 2)
 fi
 echo +++
 echo $arn_value
