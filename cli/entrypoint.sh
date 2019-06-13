@@ -29,6 +29,7 @@ if [ "$?" -ne 0 ]; then
   error_value=$(echo $arn_value | grep error);
   arn_value=$(echo $error_value | cut -d "'" -f 2);
 fi
-execution_arn=$(aws stepfunctions start-execution --state-machine $arn_value --name $execution_name --input "{\"number1\":10, \"number2\":20}"| jq .executionArn | tr -d '"')
-sleep 10s
-aws stepfunctions describe-execution --execution-arn $execution_arn
+echo $arn_value
+#execution_arn=$(aws stepfunctions start-execution --state-machine $arn_value --name $execution_name --input "{\"number1\":10, \"number2\":20}"| jq .executionArn | tr -d '"')
+#sleep 10s
+#aws stepfunctions describe-execution --execution-arn $execution_arn
