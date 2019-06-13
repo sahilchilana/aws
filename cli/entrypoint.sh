@@ -3,10 +3,10 @@ export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
 export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 export AWS_DEFAULT_REGION=us-east-1
 
-my_value=$(date)
-my_value=(${my_value// /_})
-my_value=(${my_value//:/-})
-aws stepfunctions create-state-machine --definition '{
+execution_name=$(date)
+execution_name=(${execution_name// /_})
+execution_name=(${execution_name//:/-})
+arn_value=$(aws stepfunctions create-state-machine --definition '{
               "Comment": "Add two numbers and then subtact the result of add with another number",
               "StartAt": "AddNumbers",
               "States": {
@@ -25,7 +25,7 @@ aws stepfunctions create-state-machine --definition '{
                   "End": true
                 } 
               }
-            }' --name "statemachine" --role-arn "arn:aws:iam::670868576168:role/githubactiontesting-AddFunctionRole-828QDZ3VB97V"
-aws stepfunctions start-execution --state-machine arn:aws:states:us-east-1:670868576168:stateMachine:statemachine --name $my_value --input "{\"number1\":10, \"number2\":20}"
+            }' --name "statemachine" --role-arn "arn:aws:iam::670868576168:role/githubactiontesting-AddFunctionRole-828QDZ3VB97V" | jq .stateMachine | tr -d '"')
+describe_name=$(aws stepfunctions start-execution --state-machine $arn_value --name $execution_name --input "{\"number1\":10, \"number2\":20} | jq .executionArn | tr -d '"')"
 sleep 15s
-aws stepfunctions describe-execution --execution-arn arn:aws:states:us-east-1:670868576168:execution:statemachine:$my_value
+aws stepfunctions describe-execution --execution-arn $describe_name
