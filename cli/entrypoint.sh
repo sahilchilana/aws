@@ -24,7 +24,7 @@ aws stepfunctions create-state-machine --definition '{
                   "End": true
                 } 
               }
-              }' --name "statemachine" --role-arn "arn:aws:iam::670868576168:role/lambda-vpc-role"| jq .stateMachineArn | tr -d '"'  2> file1
+              }' --name "statemachine" --role-arn "arn:aws:iam::670868576168:role/lambda-vpc-role"| jq .stateMachineArn | tr -d '"'  2>file1
 echo +++++
 cat file1
 arn_value=$(cat file1)
