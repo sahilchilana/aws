@@ -26,6 +26,8 @@ arn_value=$(aws stepfunctions create-state-machine --definition '{
                 } 
               }
             }' --name "statemachine" --role-arn "arn:aws:iam::670868576168:role/githubactiontesting-AddFunctionRole-828QDZ3VB97V" | jq .stateMachine | tr -d '"')
+echo $arn_value           
 describe_name=$(aws stepfunctions start-execution --state-machine $arn_value --name $execution_name --input "{\"number1\":10, \"number2\":20}" | jq .executionArn | tr -d '"')
+echo $describe_name
 sleep 15s
 aws stepfunctions describe-execution --execution-arn $describe_name
