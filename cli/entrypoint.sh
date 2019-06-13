@@ -5,7 +5,7 @@ export AWS_DEFAULT_REGION=us-east-1
 execution_name=$(date)
 execution_name=(${execution_name// /_})
 execution_name=(${execution_name//:/-})  
-aws stepfunctions create-state-machine --definition '{
+arn_value=$(aws stepfunctions create-state-machine --definition '{
               "Comment": "Add two numbers and then subtact the result of add with another number",
               "StartAt": "AddNumbers",
               "States": {
@@ -24,10 +24,10 @@ aws stepfunctions create-state-machine --definition '{
                   "End": true
                 } 
               }
-              }' --name "statemachine" --role-arn "arn:aws:iam::670868576168:role/lambda-vpc-role" 2>&1
-# echo +++++
+              }' --name "statemachine" --role-arn "arn:aws:iam::670868576168:role/lambda-vpc-role" 2>&1)
+echo +++++
 # arn_value=$(cat file1)
-# echo $arn_value
+echo $arn_value
 # if [ "$?" -ne 0 ]; then
 #   error_value=$(echo $arn_value | grep error);
 #   arn_value=$(echo $error_value | cut -d "'" -f 2);
