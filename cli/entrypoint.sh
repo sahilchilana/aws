@@ -24,7 +24,7 @@ arn_value=$(aws stepfunctions create-state-machine --definition '{
                   "End": true
                 } 
               }
-              }' --name "statemachine" --role-arn "arn:aws:iam::670868576168:role/lambda-vpc-role" 2>&1 | jq .stateMachineArn | tr -d '"')
+              }' --name "statemachine" --role-arn "arn:aws:iam::670868576168:role/lambda-vpc-role"| jq .stateMachineArn | tr -d '"')
 
 #execution_arn=$(aws stepfunctions start-execution --state-machine $arn_value --name $execution_name --input "{\"number1\":10, \"number2\":20}"| jq .executionArn | tr -d '"')
 #sleep 10s
