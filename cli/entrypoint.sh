@@ -24,7 +24,7 @@ arn_value=$(aws stepfunctions create-state-machine --definition '{
                   "End": true
                 } 
               }
-              }' --name "statemachine" --role-arn "arn:aws:iam::670868576168:role/lambda-vpc-role"| jq .stateMachineArn | tr -d '"')
+              }' --name "statemachine" --role-arn "arn:aws:iam::670868576168:role/lambda-vpc-role" 2>&1 | jq .stateMachineArn | tr -d '"')
 if [ "$?" -ne 0 ]; then
   error_value=$(echo $arn_value | grep error);
   arn_value=$(echo $error_value | cut -d "'" -f 2);
