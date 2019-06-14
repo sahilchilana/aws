@@ -15,7 +15,7 @@ sleep 10s
 aws stepfunctions describe-execution --execution-arn $execution_arn
 
 #2 strings
-execution_arn=$(aws stepfunctions start-execution --state-machine $arn_value --name $2_strings --input "{\"number1\":"10", \"number2\":"20"}"| jq .executionArn | tr -d '"')
+execution_arn=$(aws stepfunctions start-execution --state-machine $arn_value --name $2_strings --input "{\"number1\":\"10\", \"number2\":\"20\"}"| jq .executionArn | tr -d '"')
 sleep 10s
 aws stepfunctions describe-execution --execution-arn $execution_arn
 
