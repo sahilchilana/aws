@@ -5,7 +5,6 @@ export AWS_DEFAULT_REGION=us-east-1
 execution_name=$(date)
 execution_name=(${execution_name// /_})
 execution_name=(${execution_name//:/-})
-aws lambda list-functions --region us-east-1 --query 'Functions[?starts_with(FunctionName, `githubactiontesting`) == `true`].FunctionName' --output text
 all_functions=$(aws lambda list-functions --region us-east-1 --query 'Functions[?starts_with(FunctionName, `githubactiontesting`) == `true`].FunctionName' --output text)
 first_function_name=$(echo $all_functions | cut -d ' ' -f 1)
 second_function_name=$(echo $all_functions | cut -d ' ' -f 2)
@@ -39,7 +38,6 @@ if [[ $arn_value = *error* ]]; then
 else 
   arn_value=$(echo $arn_value | jq .stateMachineArn | tr -d '"')
 fi
-echo $arn_value
 execution_arn=$(aws stepfunctions start-execution --state-machine $arn_value --name $execution_name --input "{\"number1\":10, \"number2\":20}"| jq .executionArn | tr -d '"')
 sleep 10s
 aws stepfunctions describe-execution --execution-arn $execution_arn
