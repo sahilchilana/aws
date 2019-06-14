@@ -6,7 +6,7 @@ execution_name=$(date)
 execution_name=(${execution_name// /_})
 execution_name=(${execution_name//:/-})
 arn_value=$(aws cloudformation describe-stack-resources --stack-name githubactiontesting)
-arn_value=$(echo $value |jq '.StackResources[] | select(.ResourceType == "AWS::StepFunctions::StateMachine").PhysicalResourceId')
+arn_value=$(echo $value |jq '.StackResources[] | select(.ResourceType == "AWS::StepFunctions::StateMachine").PhysicalResourceId' | tr -d '"')
 execution_arn=$(aws stepfunctions start-execution --state-machine $arn_value --name $execution_name --input "{\"number1\":10, \"number2\":20}"| jq .executionArn | tr -d '"')
 sleep 10s
 aws stepfunctions describe-execution --execution-arn $execution_arn
