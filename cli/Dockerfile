@@ -14,6 +14,9 @@ COPY LICENSE README.md THIRD_PARTY_NOTICE.md /
 
 ENV DOCKERVERSION=18.06.1-ce
 RUN apt-get install python
+RUN pip install mechanize
+RUN apt-get install python-beautifulsoup
+RUN pip install html2text
 RUN apt-get update && \
   apt-get install -y --no-install-recommends curl groff jq && \
   apt-get -y clean && apt-get -y autoclean && apt-get -y autoremove && \
