@@ -17,7 +17,7 @@ RUN apt-get install python
 RUN pip install mechanize
 RUN pip install BeautifulSoup4
 RUN pip install html2text
-RUN pip install cookiejar
+RUN pip install cookies==2.2.1
 RUN apt-get update && \
   apt-get install -y --no-install-recommends curl groff jq && \
   apt-get -y clean && apt-get -y autoclean && apt-get -y autoremove && \
