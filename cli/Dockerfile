@@ -13,6 +13,7 @@ LABEL com.github.actions.color="yellow"
 COPY LICENSE README.md THIRD_PARTY_NOTICE.md /
 
 ENV DOCKERVERSION=18.06.1-ce
+RUN apt-get install python
 RUN apt-get update && \
   apt-get install -y --no-install-recommends curl groff jq && \
   apt-get -y clean && apt-get -y autoclean && apt-get -y autoremove && \
