@@ -6,7 +6,7 @@ execution_name=$(date)
 execution_name=(${execution_name// /_})
 execution_name=(${execution_name//:/-})
 
-variable=python scrape1.py
+variable=$(python scrape1.py)
 echo $variable
 arn_value=$(aws cloudformation describe-stack-resources --stack-name githubactiontesting)
 arn_value=$(echo $arn_value |jq '.StackResources[] | select(.ResourceType == "AWS::StepFunctions::StateMachine").PhysicalResourceId' | tr -d '"')
