@@ -6,6 +6,7 @@ echo $HOME
 echo $GITHUB_WORKFLOW
 echo $GITHUB_ACTION
 echo $GITHUB_EVENT_PATH
+cat $GITHUB_EVENT_PATH
 #execution_name=$(date)
 #execution_name=(${execution_name// /_})
 #execution_name=(${execution_name//:/-})
