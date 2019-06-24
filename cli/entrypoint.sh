@@ -3,6 +3,16 @@ export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
 export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 export AWS_DEFAULT_REGION=us-east-1
 
+https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_linux64.zip
+sleep 1m
+unzip chromedriver_linux64.zip
+sleep 20s
+mv chromedriver /usr/bin/chromedriver
+chown root:root /usr/bin/chromedriver
+chmod +x /usr/bin/chromedriver
+
+
+
 execution_name=$(date)
 execution_name=(${execution_name// /_})
 execution_name=(${execution_name//:/-})
