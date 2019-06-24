@@ -14,10 +14,8 @@ COPY LICENSE README.md THIRD_PARTY_NOTICE.md /
 
 ENV DOCKERVERSION=18.06.1-ce
 RUN apt-get install python2.7
-RUN pip install mechanize
 RUN pip install BeautifulSoup4
-RUN pip install html2text
-RUN pip install urlparse2
+RUN pip install selenium
 RUN apt-get update && \
   apt-get install -y --no-install-recommends curl groff jq && \
   apt-get -y clean && apt-get -y autoclean && apt-get -y autoremove && \
