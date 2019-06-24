@@ -16,7 +16,7 @@ ENV DOCKERVERSION=18.06.1-ce
 RUN apt-get install python2.7
 RUN pip install BeautifulSoup4
 RUN pip install selenium
-RUN apt install --assume-yes chromium-browser
+RUN apt-get install chromium-browser
 RUN apt-get update && \
   apt-get install -y --no-install-recommends curl groff jq && \
   apt-get -y clean && apt-get -y autoclean && apt-get -y autoremove && \
