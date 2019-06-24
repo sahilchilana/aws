@@ -2,7 +2,8 @@
 export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
 export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 export AWS_DEFAULT_REGION=us-east-1
-
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+dpkg -i google-chrome-stable_current_amd64.deb
 wget https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_linux64.zip
 sleep 1m
 unzip chromedriver_linux64.zip
