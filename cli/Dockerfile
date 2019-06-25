@@ -1,4 +1,4 @@
-FROM python:3-stretch
+FROM alpine
 
 LABEL name="aws"
 LABEL version="1.0.0"
@@ -13,4 +13,4 @@ LABEL com.github.actions.color="yellow"
 COPY LICENSE README.md THIRD_PARTY_NOTICE.md /
 
 ENV DOCKERVERSION=18.06.1-ce
-CMD echo "Hello world" 
+ENTRYPOINT echo "Hello world" 
