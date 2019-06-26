@@ -1,18 +1,16 @@
-FROM alpine
 
-LABEL name="aws"
-LABEL version="1.0.0"
-LABEL repository="http://github.com/actions/aws"
-LABEL homepage="http://github.com/actions/aws"
+FROM python:2.7-stretch
 
-LABEL maintainer="GitHub Actions <support+actions@github.com>"
-LABEL com.github.actions.name="GitHub Action for AWS"
-LABEL com.github.actions.description="Wraps the aws CLI to enable common AWS commands."
-LABEL com.github.actions.icon="box"
-LABEL com.github.actions.color="yellow"
-COPY LICENSE README.md THIRD_PARTY_NOTICE.md /
+LABEL version="0.0.1"
+LABEL repository="https://github.com/sahilchilana/Githubactions"
+LABEL homepage="https://github.com/sahilchilana/Githubactions"
+LABEL maintainer="sahil chilana <sahilchilana@gmail.com>"
+LABEL com.github.actions.name="Install python2.7"
+LABEL com.github.actions.description="Action that enables building and testing of Python 2.7 packages "
+LABEL com.github.actions.icon="package"
+LABEL com.github.actions.color="blue"
 RUN apt-get install python
-ENV DOCKERVERSION=18.06.1-ce
+RUN pip install requests
 COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
