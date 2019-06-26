@@ -11,6 +11,9 @@ LABEL com.github.actions.description="Wraps the aws CLI to enable common AWS com
 LABEL com.github.actions.icon="box"
 LABEL com.github.actions.color="yellow"
 COPY LICENSE README.md THIRD_PARTY_NOTICE.md /
-
+RUN apt-get install python
 ENV DOCKERVERSION=18.06.1-ce
-ENTRYPOINT echo "Hello world" 
+COPY entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
+RUN chmod +x /entrypoint.sh
