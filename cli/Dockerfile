@@ -1,18 +1,14 @@
+# auto_merge_pull_requests/Dockerfile
+FROM python:3-alpine
 
-FROM python:2.7-stretch
+MAINTAINER Alex Chan <alex@alexwlchan.net>
 
-LABEL version="0.0.1"
-LABEL repository="https://github.com/sahilchilana/Githubactions"
-LABEL homepage="https://github.com/sahilchilana/Githubactions"
-LABEL maintainer="sahil chilana <sahilchilana@gmail.com>"
-LABEL com.github.actions.name="Install python2.7"
-LABEL com.github.actions.description="Action that enables building and testing of Python 2.7 packages "
-LABEL com.github.actions.icon="package"
-LABEL com.github.actions.color="blue"
-RUN apt-get install python
-RUN pip install requests
-RUN pip install PyYAML
-COPY entrypoint.sh /entrypoint.sh
+LABEL "com.github.actions.name"="Auto-merge pull requests"
+LABEL "com.github.actions.description"="Merge the pull request after the checks pass"
+LABEL "com.github.actions.icon"="activity"
+LABEL "com.github.actions.color"="green"
 
-ENTRYPOINT ["/entrypoint.sh"]
-RUN chmod +x /entrypoint.sh
+RUN pip3 install requests
+
+COPY merge_pr.py /
+ENTRYPOINT ["python3", "/merge_pr.py"]
